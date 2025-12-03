@@ -1,0 +1,3 @@
+[console_scripts]
+scan_front_filter_node = rosmaster_bringup.scan_front_filter_node:main
+

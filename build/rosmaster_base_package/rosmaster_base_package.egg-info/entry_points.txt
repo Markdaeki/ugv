@@ -1,0 +1,3 @@
+[console_scripts]
+rosmaster_base_node = rosmaster_base_package.rosmaster_base_node:main
+
