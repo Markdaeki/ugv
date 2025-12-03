@@ -79,8 +79,10 @@ def generate_launch_description():
         name='scan_front_filter',
         output='screen',
         parameters=[{
-            'lower_angle': -1.5708,  # -90도
-            'upper_angle':  1.5708,  # +90도
+            # 라이다를 URDF에서 180도 회전했으므로 스캔 좌표계 기준으로
+            # +90도 ~ +270도(π/2 ~ 3π/2)를 전면으로 사용한다.
+            'lower_angle':  1.5708,  # +90도
+            'upper_angle':  4.7124,  # +270도
         }]
     )
 

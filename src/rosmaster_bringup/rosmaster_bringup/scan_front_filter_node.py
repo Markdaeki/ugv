@@ -11,8 +11,12 @@ class ScanFrontFilterNode(Node):
         super().__init__('scan_front_filter')
 
         # 파라미터: 앞쪽 범위 (rad)
-        self.declare_parameter('lower_angle', -math.pi / 2.0)  # -90 deg
-        self.declare_parameter('upper_angle',  math.pi / 2.0)  # +90 deg
+        #
+        # 라이다 조인트를 180도 회전시켜 base_link와 정렬한 상태이므로
+        # 로봇의 "정면"을 선택하려면 스캔 좌표계 기준으로 π/2 ~ 3π/2를
+        # 필터링해야 한다.
+        self.declare_parameter('lower_angle',  math.pi / 2.0)      # +90 deg
+        self.declare_parameter('upper_angle',  3.0 * math.pi / 2.0)  # +270 deg
 
         self.lower_angle = float(self.get_parameter('lower_angle').value)
         self.upper_angle = float(self.get_parameter('upper_angle').value)
